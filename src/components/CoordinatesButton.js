@@ -3,16 +3,15 @@
 import React, { Component } from 'react'
 
 export default class CoordinatesButton extends Component {
-    handleClick = (array) => {
-        console.log(array)
-        this.props.onReceiveCoordinates([array.clientX, array.clientY]) 
+    handleClick = (event) => {
+        console.log(event)
+        this.props.onReceiveCoordinates([event.clientX, event.clientY]) 
     }
 
     render() {
         return (
             <div>
-                <button onClick={this.handleClick}>   
-                </button>
+                <button onClick={this.handleClick}>Log your click!</button>
              </div>
         )
     }
