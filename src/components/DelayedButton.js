@@ -2,17 +2,21 @@
 
 import React, { Component } from 'react'
 
-setTimeout = (event) => {
-    console.log(event.delay)
-    // const delay = this.props.delay 
-    // this.props.onDelayedClick(delay)
-}
-
 export default class DelayedButton extends Component {
+    handleDelayClick = (event) => {
+        event.persist()
+        const delay = this.props.delay 
+        const callback = () => {
+            this.props.onDelayedClick(event)
+        }
+        setTimeout(callback, delay)
+        
+    }
+
     render() {
         return (
             <div>
-            <button onClick={setTimeout}>Delay Click</button>  
+            <button onClick={this.handleDelayClick}>Delay Click</button>  
             </div>
         )
     }
